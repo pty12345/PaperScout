@@ -1,28 +1,22 @@
 # PaperScout: An Autonomous Agent for Academic Paper Search with Process-Aware Sequence-Level Policy Optimization
 
 > 🔍 PaperScout is an autonomous LLM-based agent that reformulates academic paper search as a **multi-turn decision-making process**, dynamically deciding *when* and *how* to invoke search and citation expansion tools.
+> 
 > 🧠 To train such agents effectively, we introduce **PSPO (Proximal Sequence Policy Optimization)**, a process-aware, sequence-level RL algorithm tailored for agentic retrieval.
 
 📄 **Paper**: [https://arxiv.org/pdf/2601.10029](https://arxiv.org/pdf/2601.10029).
 
-## 🚀 Motivation
+## 🚀 From Static Retrieval to Agentic Search
 
-Academic paper search is a core step in scientific research, but existing systems suffer from two key limitations:
+Academic paper search is a core step in scientific research, but existing systems suffer from non-negligible limitations.
 
-1. **Static workflows**
-   Most systems rely on predefined pipelines (e.g., *search → expand → rerank*), which cannot adapt their behavior as new information is discovered.
+> **Semantic Match:**
+> Treats paper search as a single-shot retrieval problem, assuming relevance can be determined from the query alone.
+> 
+> **Fixed Workflow:**
+> Decomposes search into multiple steps, but follows a predefined pipeline that cannot adapt to evolving search results.
 
-2. **Limited support for complex, conditional queries**
-   Queries such as
-
-   > *“Apply reinforcement learning to protein folding, excluding Transformer-based methods”*
-   > often return many thematically related but constraint-violating papers.
-
-PaperScout addresses these challenges by **treating paper search as a sequential decision-making problem**, enabling flexible, context-aware exploration.
-
-## 🧭 From Static Retrieval to Agentic Search
-
-PaperScout departs from traditional semantic matching and fixed workflows by introducing an **agentic search paradigm**.
+PaperScout addresses these challenges by **treating paper search as a sequential decision-making problem**, enabling flexible, context-aware automatic paper discovery.
 
 <!-- IMAGE PLACEHOLDER -->
 
@@ -30,13 +24,7 @@ PaperScout departs from traditional semantic matching and fixed workflows by int
 
 <!-- Path suggestion: assets/overview_paradigms.png -->
 
-<img width="70%" height="651" alt="image" src="https://github.com/user-attachments/assets/63b17a39-e15c-4f8b-b0b6-8d3849296f51" />
-
-**Key idea:**
-At each step, the agent *observes* the current paper pool and *decides* whether to:
-
-* issue new **Search** queries, or
-* **Expand** from existing papers via citation links.
+<!-- <img width="70%" height="651" alt="image" src="https://github.com/user-attachments/assets/63b17a39-e15c-4f8b-b0b6-8d3849296f51" /> -->
 
 ---
 
@@ -53,22 +41,22 @@ PaperScout models academic paper search as a **POMDP**, where the agent iterativ
 
 ### Core Components
 
-* **State**
+* **State.**
   A latent *paper pool* containing all retrieved papers so far.
 
-* **Observation**
+* **Observation.**
   A summarized view of the pool, including:
 
   * top-ranked expanded papers,
   * candidate papers for further expansion,
   * interaction history to avoid redundancy.
 
-* **Actions**
+* **Actions.**
 
   * `Search(query)`: retrieve new papers from scholarly search engines
   * `Expand(paper)`: follow citation links of an existing paper
 
-* **Reward**
+* **Reward.**
   Designed to maximize **expected recall of relevant papers**, while penalizing redundant actions.
 
 ---
@@ -84,7 +72,7 @@ Training multi-turn retrieval agents with standard RL methods is surprisingly ha
 
 ### ✨ Our Solution: PSPO
 
-**Proximal Sequence Policy Optimization (PSPO)** aligns optimization *exactly* with the agent’s interaction granularity.
+**Proximal Sequence Policy Optimization (PSPO)**, which aligns optimization *exactly* with the agent’s interaction granularity.
 
 <!-- IMAGE PLACEHOLDER -->
 

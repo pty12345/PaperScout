@@ -72,7 +72,7 @@ Training multi-turn retrieval agents with standard RL methods is surprisingly ha
 
 ### ✨ Our Solution: PSPO
 
-**Proximal Sequence Policy Optimization (PSPO)**, which aligns optimization *exactly* with the agent’s interaction granularity.
+We propose **Proximal Sequence Policy Optimization (PSPO)**, which aligns optimization *exactly* with the agent’s interaction granularity.
 
 <!-- IMAGE PLACEHOLDER -->
 
@@ -84,6 +84,8 @@ Training multi-turn retrieval agents with standard RL methods is surprisingly ha
 * Performs **sequence-level advantage estimation**
 * Incorporates **process rewards** via a learned critic
 * Significantly improves **training stability and sample efficiency**
+
+<img width="1782" height="658" alt="image" src="https://github.com/user-attachments/assets/1cf52ad6-5497-4b07-86aa-733b3722af76" />
 
 ---
 

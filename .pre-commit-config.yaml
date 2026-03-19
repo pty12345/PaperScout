@@ -1,0 +1,15 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: "v0.12.2"
+    hooks:
+      - id: ruff
+        args: ["--fix", "--show-fixes", "--output-format=full"]
+        exclude: ^.*\.(ipynb)$|^verl/|^recipe/
+      - id: ruff-format
+        exclude: ^verl/
+  
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: 'v1.17.0'
+    hooks:
+      - id: mypy
+        exclude: ^verl/

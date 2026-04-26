@@ -1,3 +1,7 @@
+> [!IMPORTANT]
+> For more detailed discussion, please visit: https://agentr1.github.io/paperscout/
+
+
 # PaperScout: An Autonomous Agent for Academic Paper Search with Process-Aware Sequence-Level Policy Optimization
 
 > 🔍 PaperScout is an autonomous LLM-based agent that reformulates academic paper search as a **multi-turn decision-making process**, dynamically deciding *when* and *how* to invoke search and citation expansion tools.
